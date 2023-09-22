@@ -4,7 +4,14 @@
 
 bool running = true;
 
+struct Render_State {
+	int height, width;
+	void* memory;
 
+	BITMAPINFO bitmapinfo;
+};
+
+Render_State render_state;
 void* buffer_memory; 
 int buffer_width;
 int buffer_height;
