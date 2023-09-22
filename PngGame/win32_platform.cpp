@@ -1,3 +1,5 @@
+
+
 #include <windows.h>
 
 
@@ -12,6 +14,8 @@ struct Render_State {
 };
 
 Render_State render_state;
+
+#include "renderer.cpp"
 
 LRESULT window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	LRESULT result = 0;
@@ -71,12 +75,7 @@ int WinMain(HINSTANCE HInstance, HINSTANCE hPrevInstance, LPSTR lpCmdline, int n
 			DispatchMessage(&message);
 		}
 		//simulate
-		unsigned int* pixel = (unsigned int*)render_state.memory;
-		for (int y = 0; y < render_state.height; y++) {
-			for (int x = 0; x < render_state.width; x++) {
-				*pixel++ = 0xff1100 * y + (0xff6600 * x);
-			}
-		}
+		render_background();
 
 		//render
 		StretchDIBits(hdc, 0, 0, render_state.width, render_state.height, 0, 0, render_state.width, render_state.height, render_state.memory, &render_state.bitmap_info, DIB_RGB_COLORS, SRCCOPY);
