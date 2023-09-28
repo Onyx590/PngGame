@@ -3,7 +3,7 @@
 
 
 
-bool running = true;
+global_variable bool running = true;
 
 struct Render_State {
 	int height, width;
@@ -12,7 +12,7 @@ struct Render_State {
 	BITMAPINFO bitmap_info;
 };
 
-Render_State render_state;
+global_variable Render_State render_state;
 
 #include "renderer.cpp"
 
